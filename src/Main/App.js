@@ -1,10 +1,11 @@
 import React from 'react';
 import '../Main/App.scss';
+import Login from '../Components/Login/Login';
 
 function App() {
     return (
         <div className="App">
-            <h1>test</h1>
+            <Login />
         </div>
     );
 }
