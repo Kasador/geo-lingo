@@ -7,9 +7,7 @@ function App() {
     return (
         <div className="App">
             <Router>
-                <Login />
-                <Link to="/sign-in/">Sign In</Link> {/* temporary sign in button, Link will probably have to be used in Steven's Login component page */}
-                <Route path="/sign-in/" component={Login} />
+                <Route exact path="/sign-in/" component={Login} />
             </Router>
         </div>
     );
