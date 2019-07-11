@@ -2,8 +2,7 @@ import React, {useState} from 'react';
 import '../Login/Login.scss';
 import World from '../Assets/Images/header.png';
 import Logo from '../Assets/Images/logo.png';
-// import { BrowserRouter as Router, Route } from 'react-router-dom';
-// import CreateAccount from '../CreateAccount/CreateAccount';
+import { Link } from 'react-router-dom';
 
 // Login / Create account page
 function Login() {
@@ -29,11 +28,10 @@ function Login() {
             </div>
             {/* buttons */}
             <div className="LoginButtonsWrapper">
-                <div className="LoginButtons">
-                    {/* <Router> */}
-                    <button id="CreateAccount">create account</button>
-                    {/* <Route exact path="/create-account/" component={CreateAccount} /> */}
-                    {/* </Router> */}
+                <div className="LoginButtons"> 
+                    <Link to="/create-account/">
+                      <button id="CreateAccount">create account</button>
+                    </Link>
                     <button id="LogIn" onClick={show}>log in</button>
                 </div>
             </div>
@@ -54,7 +52,7 @@ function Login() {
                 </div>
             </div> : null}
             {/* graphic, world */}
-            <img src={World} alt="world header" id="LoginImage" />
+            <img src={World} alt="world-header" id="LoginImage" />
         </div>
     );
 }
