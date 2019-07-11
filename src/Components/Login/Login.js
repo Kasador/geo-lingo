@@ -1,14 +1,28 @@
-import React from 'react';
+import React, {useState} from 'react';
 import '../Login/Login.scss';
 import World from '../Assets/Images/header.png';
 import Logo from '../Assets/Images/logo.png';
+// import { BrowserRouter as Router, Route } from 'react-router-dom';
+// import CreateAccount from '../CreateAccount/CreateAccount';
 
 // Login / Create account page
 function Login() {
+    // modal state
+    const [isOpen, setIsOpen] = useState({
+        open: false
+    });
+    const show = () => {
+        setIsOpen({ ...isOpen, open: true });
+    }
+
+    const hide = () => {
+        setIsOpen({ ...isOpen, open: false });
+    }
     return (
         <div className="Login">
             {/* header */}
             <div className="LoginHeader">
+                {/* logo */}
                 <img src={Logo} alt="Geolingo logo" className="Logo" />
                 <h1>Welcome to Geolingo!</h1>
                 <h2>Make friends all around the globe while practicing the language you love!</h2>
@@ -16,12 +30,31 @@ function Login() {
             {/* buttons */}
             <div className="LoginButtonsWrapper">
                 <div className="LoginButtons">
+                    {/* <Router> */}
                     <button id="CreateAccount">create account</button>
-                    <button id="LogIn">log in</button>
+                    {/* <Route exact path="/create-account/" component={CreateAccount} /> */}
+                    {/* </Router> */}
+                    <button id="LogIn" onClick={show}>log in</button>
                 </div>
             </div>
+            {/* modal login */}
+            {isOpen.open ? <div className="LoginModalWrapper">
+                <div className="Overlay" onClick={hide}></div>
+                <div className="LoginModal">
+                    <i className="far fa-window-close LoginClose" onClick={hide}></i>
+                    <div className="LogInFields">
+                        {/* logo */}
+                        <img src={Logo} alt="world header" className="LoginLogo" />
+                        <input type="text" name="username" placeholder="Username..." />
+                        <input type="password" name="password" placeholder="Password..." />
+                    </div>
+                    <div className="LoginBtnModalWrapper">
+                        <button className="LoginBtnModal">Login In</button> 
+                    </div>
+                </div>
+            </div> : null}
             {/* graphic, world */}
-            <img src={World} alt="world header image" id="LoginImage" />
+            <img src={World} alt="world header" id="LoginImage" />
         </div>
     );
 }
