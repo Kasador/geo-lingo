@@ -9,7 +9,7 @@ function Login() {
         <div className="Login">
             {/* header */}
             <div className="LoginHeader">
-                <img src={Logo} alt="Geolingo logo" className="Logo" />
+                <img src={Logo} alt="Geolingo" className="Logo" />
                 <h1>Welcome to Geolingo!</h1>
                 <h2>Make friends all around the globe while practicing the language you love!</h2>
             </div>
@@ -21,7 +21,7 @@ function Login() {
                 </div>
             </div>
             {/* graphic, world */}
-            <img src={World} alt="world header image" id="LoginImage" />
+            <img src={World} alt="world-header" id="LoginImage" />
         </div>
     );
 }
