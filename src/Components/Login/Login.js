@@ -2,6 +2,7 @@ import React from 'react';
 import '../Login/Login.scss';
 import World from '../Assets/Images/header.png';
 import Logo from '../Assets/Images/logo.png';
+import { Link } from 'react-router-dom';
 
 // Login / Create account page
 function Login() {
@@ -16,7 +17,7 @@ function Login() {
             {/* buttons */}
             <div className="LoginButtonsWrapper">
                 <div className="LoginButtons">
-                    <button id="CreateAccount">create account</button>
+                    <Link to="/create-account/"><button id="CreateAccount">create account</button></Link>
                     <button id="LogIn">log in</button>
                 </div>
             </div>
