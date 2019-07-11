@@ -1,0 +1,46 @@
+@import '../Assets/colors.scss';
+
+.account-creation-page {
+    background: $primary-color;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+
+    h1 { //'Create an Account' header
+        align-self: center;
+        font-size: 2em;
+        padding: 1em;
+    }
+    
+}
+
+.back-button {
+    padding: 1em;
+    position: absolute;
+    top: 5%;
+    left: 5%;
+}
+
+
+.form div { //all the elements are in their own divs
+    width: 30%;
+    padding: 2em;
+
+    label {
+        font-size: 1.5em;
+    }
+}
+
+.languages-input { //holds the box, button, and text.
+
+    .learning-languages { //the box that shows the languages added
+        border: 1px solid black;
+        background-color: $gray;
+        display: inline-block;
+        text-align: center;
+    }
+
+
+}
+
