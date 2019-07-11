@@ -8,8 +8,8 @@ import CreateAccount from '../Components/CreateAccount/CreateAccount';
 function App() {
     return (
         <div className="App">
-            <Nav />
             <Router>
+                <Route exact path="/" component={Nav} />
                 <Route exact path="/sign-in/" component={Login} />
                 <Route exact path="/create-account/" component={CreateAccount} />
             </Router>

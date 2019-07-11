@@ -31,7 +31,7 @@ function Nav() {
                 <i className="fas fa-bars NavIcon" onClick={openNav}></i></> : <><i className="far fa-window-close NavIcon" onClick={closeNav}></i></>}
             {navOpen.open ? <StyleRoot>
                 <nav className="Navbar" style={styles.slideIn}>
-                    <img src={Logo} alt="Logo" class="NavLogo" />
+                    <img src={Logo} alt="Logo" className="NavLogo" />
                     <ul>
                         <li>Explore</li>
                         <li>Chats</li>
