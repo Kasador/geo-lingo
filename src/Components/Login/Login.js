@@ -47,7 +47,7 @@ function Login() {
                         <input type="password" name="password" placeholder="Password..." />
                     </div>
                     <div className="LoginBtnModalWrapper">
-                        <button className="LoginBtnModal">Login In</button> 
+                        <button className="LoginBtnModal">Log In</button> 
                     </div>
                 </div>
             </div> : null}
