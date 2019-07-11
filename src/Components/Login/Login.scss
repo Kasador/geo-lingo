@@ -1,0 +1,78 @@
+// import colors
+@import '../Assets/colors.scss';
+
+// header styles
+.LoginHeader {
+    display: flex;
+    // align-items: center;
+    flex-direction: column;
+    position: fixed;
+    transform: translate(50%, -50%);
+    right: 50%;
+    top: 40%;
+
+    h1 {
+        font-size: 4rem;
+        font-weight: 900;
+        text-align: center;
+    }
+    h2 {
+        font-size: 2.5rem;
+        text-align: left;
+        font-weight: 100;
+        color: #888;
+    }
+}
+// create account / log in styles
+.LoginButtonsWrapper {
+    display: flex;
+    justify-content: center;
+}
+// buttons 
+.LoginButtons {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    position: absolute;
+    bottom: 50px;
+    z-index: 1;
+
+    button {
+        cursor: pointer;
+        font-weight: 700;
+        font-size: 2rem;
+        text-transform: uppercase;
+        padding: 5px 20px;
+        width: 400px;
+        border-radius: 10px;
+        margin: 10px;
+        
+        transition: all 0.3s;
+    }
+    button:focus {
+        outline: none;
+    }
+    button:hover {
+        box-shadow: 3px 5px;
+    }
+}
+// style individual buttons
+#CreateAccount {
+    background-color: $primary-color;
+    color: $white;
+}
+#LogIn {
+    background-color: $white;
+    color: $primary-color;
+}
+#LoginImage {
+    width: 100%;
+    position: absolute;
+    z-index: -1;
+    bottom: 0;
+}
+// logo 
+.Logo {
+    width: 200px;
+    margin: 0 auto;
+}
