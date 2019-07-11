@@ -1,10 +1,14 @@
 import React from 'react';
 import '../Main/App.scss';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import Login from '../Components/Login/Login';
 
 function App() {
     return (
         <div className="App">
-            <h1>test</h1>
+            <Router>
+                <Route exact path="/sign-in/" component={Login} />
+            </Router>
         </div>
     );
 }

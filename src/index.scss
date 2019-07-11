@@ -1,0 +1,8 @@
+// import primary colors
+@import './Components/Assets/colors.scss';
+
+body {
+    background-color: $white;
+    color: $black;
+    font-family: 'Hind', sans-serif;
+}
