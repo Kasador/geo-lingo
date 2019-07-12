@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import './CreateAccount.scss';
 import { Link } from 'react-router-dom';
+import DatePicker from 'react-date-picker'
+
 
 
 class CreateAccount extends Component {
@@ -13,6 +15,7 @@ class CreateAccount extends Component {
         email: '',
         password: '',
         confirmPass: '',
+        birthdate: '',
         nativeLanguage: '',
         learningLanguage: '',
         learningLanguagesList: [],
@@ -117,6 +120,7 @@ class CreateAccount extends Component {
         })
         
         return (
+            <>
             <div className="account-creation-page">
 
                 <Link to="/sign-in/"><button className="back-button">Go Back</button></Link>
@@ -144,6 +148,10 @@ class CreateAccount extends Component {
                         <label>Email Address: </label>
                         <input type="text" value={this.state.email} onChange={(e) => this.handleUserInfoChange(e, 'email')}/>
                     </div>
+
+                    
+                       
+                   
 
                     <div>
                         <label>Password: </label>
@@ -187,7 +195,14 @@ class CreateAccount extends Component {
                 </form>
 
                 
+
+
+                
             </div>
+
+            
+            <DatePicker />
+            </>
         )
     }
 }
