@@ -11,6 +11,8 @@ class CreateAccount extends Component {
         firstName: '',
         lastName: '',
         email: '',
+        password: '',
+        confirmPass: '',
         nativeLanguage: '',
         learningLanguage: '',
         learningLanguagesList: [],
@@ -36,6 +38,14 @@ class CreateAccount extends Component {
 
             case 'email':
                 this.setState({email: e.target.value});
+            break;
+
+            case 'password':
+                this.setState({ password: e.target.value });
+            break;
+
+            case 'confirmPass':
+                this.setState({ confirmPass: e.target.value });
             break;
 
             case 'nativeLanguage':
@@ -75,8 +85,16 @@ class CreateAccount extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
+
+        //check if password and confirmpass are the same
+
+        if (this.state.password === this.state.confirmPass) {
+            console.log(this.state)
+        } else {
+            alert('Passwords are different')
+        }
         
-        console.log(this.state); // all user info including languages that they want to learn.
+       
     }
 
     
@@ -125,6 +143,16 @@ class CreateAccount extends Component {
                     <div>
                         <label>Email Address: </label>
                         <input type="text" value={this.state.email} onChange={(e) => this.handleUserInfoChange(e, 'email')}/>
+                    </div>
+
+                    <div>
+                        <label>Password: </label>
+                        <input type="password" value={this.state.password} onChange={(e) => this.handleUserInfoChange(e, 'password')} />
+                    </div>
+
+                    <div>
+                        <label>Confirm Password: </label>
+                        <input type="password" value={this.state.confirmPass} onChange={(e) => this.handleUserInfoChange(e, 'confirmPass')} />
                     </div>
 
                     <div>
