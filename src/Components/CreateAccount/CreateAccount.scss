@@ -6,6 +6,7 @@
     align-items: flex-start;
     justify-content: center;
     flex-direction: column;
+    height: 100vh;
 
     h1 { //'Create an Account' header
         align-self: center;
@@ -24,13 +25,13 @@
 
 
 .form div { //all the elements are in their own divs
-    width: 30%;
-    padding: 2em;
-
+    
     label {
         font-size: 1.5em;
     }
 }
+
+
 
 .languages-input { //holds the box, button, and text.
 
