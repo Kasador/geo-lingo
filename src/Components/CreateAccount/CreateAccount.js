@@ -87,23 +87,11 @@ class CreateAccount extends Component {
         }));
     }
 
-    handleSubmit = (e) => {
-        e.preventDefault();
-
-        //check if password and confirmpass are the same
-
-        if (this.state.password === this.state.confirmPass) {
-            console.log(this.state)
-        } else {
-            alert('Passwords are different')
-        }
-        
-       
-    }
-
+    //for the datepicker
     handleDateChange = date => {
        this.setState({birthdate: date}); 
     }
+
 
     handleGenderSelect = (e, gender) => {
         if (gender === 'male') {
@@ -118,6 +106,21 @@ class CreateAccount extends Component {
         
     }
 
+    handleSubmit = (e) => {
+        e.preventDefault();
+
+        //check if password and confirmpass are the same
+        //add checks for everything else here later
+
+        if (this.state.password === this.state.confirmPass) {
+            console.log(this.state)
+        } else {
+            alert('Passwords are different')
+        }
+
+
+    }
+
     
 
    
@@ -126,6 +129,7 @@ class CreateAccount extends Component {
 
         let maleButtonStyle, femaleButtonStyle;
 
+        //add styling based on this.state.gender
         if (this.state.gender === 'male') {
             maleButtonStyle = { backgroundColor: 'red' };
             femaleButtonStyle = { backgroundColor: 'white' };
@@ -180,6 +184,7 @@ class CreateAccount extends Component {
                     <input type="text" value={this.state.email} onChange={(e) => this.handleUserInfoChange(e, 'email')}/>
                 </div>
 
+                {/* calendar/input fiels to select birthday*/}
                 <div>
                     <label>Date of Birth</label>
                     <DatePicker 
