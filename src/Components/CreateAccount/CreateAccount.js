@@ -16,6 +16,7 @@ class CreateAccount extends Component {
         password: '',
         confirmPass: '',
         birthdate: new Date(),
+        gender: '',
         nativeLanguage: '',
         learningLanguage: '',
         learningLanguagesList: [],
@@ -104,13 +105,39 @@ class CreateAccount extends Component {
        this.setState({birthdate: date}); 
     }
 
+    handleGenderSelect = (e, gender) => {
+        if (gender === 'male') {
+            this.setState({gender: 'male'})
+       
+        } else if (gender === 'female') {
+            this.setState({gender: 'female'})
+        
+        } else {
+            console.log('no')
+        }
+        
+    }
+
     
 
    
 
     render () {
 
+        let maleButtonStyle, femaleButtonStyle;
+
+        if (this.state.gender === 'male') {
+            maleButtonStyle = { backgroundColor: 'red' };
+            femaleButtonStyle = { backgroundColor: 'white' };
+        } else if (this.state.gender === 'female') {
+            maleButtonStyle = { backgroundColor: 'white' };
+            femaleButtonStyle = { backgroundColor: 'red' };
+        } else {
+            maleButtonStyle = { backgroundColor: 'white' };
+            femaleButtonStyle = { backgroundColor: 'white' };
+        }
      
+        
 
         // loop through the languages in the state array and output them into a list
         const languages = this.state.learningLanguagesList.map(language => {
@@ -124,94 +151,98 @@ class CreateAccount extends Component {
         })
         
         return (
-            <>
+       
             <div className="account-creation-page">
 
                 <Link to="/sign-in/"><button className="back-button">Go Back</button></Link>
 
                 <h1>Create an Account</h1>
 
-                <form onSubmit={this.handleSubmit} className="form">
-
-                    <div>
-                        <label>Username: </label>    
-                         <input type="text" value={this.state.username} onChange={(e) => this.handleUserInfoChange(e, 'username')} /> 
-                    </div>
-
-                    <div>
-                        <label>First Name: </label>
-                        <input type="text" value={this.state.firstName} onChange={(e) => this.handleUserInfoChange(e, 'firstName')}/>
-                    </div>
-
-                    <div>
-                        <label>Last Name: </label>
-                        <input type="text" value={this.state.lastName} onChange={(e) => this.handleUserInfoChange(e, 'lastName')}/>
-                    </div>
-
-                    <div>
-                        <label>Email Address: </label>
-                        <input type="text" value={this.state.email} onChange={(e) => this.handleUserInfoChange(e, 'email')}/>
-                    </div>
-
-                    <div>
-                        <label>Date of Birth</label>
-                        <DatePicker 
-                            value={this.state.birthdate}
-                            onChange={this.handleDateChange}/>
-                    </div>
-                       
-                    
-
-                    <div>
-                        <label>Password: </label>
-                        <input type="password" value={this.state.password} onChange={(e) => this.handleUserInfoChange(e, 'password')} />
-                    </div>
-
-                    <div>
-                        <label>Confirm Password: </label>
-                        <input type="password" value={this.state.confirmPass} onChange={(e) => this.handleUserInfoChange(e, 'confirmPass')} />
-                    </div>
-
-                    <div>
-                        <label>Native Language: </label>
-                        <input type="text" value={this.state.nativeLanguage} onChange={(e) => this.handleUserInfoChange(e, 'nativeLanguage')} />
-                    </div>
-
-                    {/* the part below contains the whole learning languages section */}
-
-                    <div className="languages-input">
-                        <label>Languages you want to learn:</label>
-
-                        <input type="text" value={this.state.learningLanguage} onChange={(e) => this.handleUserInfoChange(e, 'learningLanguage')} />
-
-                        <button onClick={this.submitLanguage}>Add Language</button>
-
-                        {/* shows the languages added */}
-                        <div className="learning-languages">
-                            <ul>
-                                {languages}
-                            </ul>
-                        </div>
-
-                    </div>
-
-                    <div>
-                        {/*Submits the entire form */}
-                        <button type="submit">Submit</button>
-                    </div>
-
-                    
-                </form>
-
                 
 
+                <div>
+                    <label>Username: </label>    
+                        <input type="text" value={this.state.username} onChange={(e) => this.handleUserInfoChange(e, 'username')} /> 
+                </div>
 
-                
+                <div>
+                    <label>First Name: </label>
+                    <input type="text" value={this.state.firstName} onChange={(e) => this.handleUserInfoChange(e, 'firstName')}/>
+                </div>
+
+                <div>
+                    <label>Last Name: </label>
+                    <input type="text" value={this.state.lastName} onChange={(e) => this.handleUserInfoChange(e, 'lastName')}/>
+                </div>
+
+                <div>
+                    <label>Email Address: </label>
+                    <input type="text" value={this.state.email} onChange={(e) => this.handleUserInfoChange(e, 'email')}/>
+                </div>
+
+                <div>
+                    <label>Date of Birth</label>
+                    <DatePicker 
+                        value={this.state.birthdate}
+                        onChange={this.handleDateChange}/>
+                </div>
+
+                <div>
+                    <button 
+                        style={maleButtonStyle}
+                        onClick={(e) => this.handleGenderSelect(e, 'male')}
+                        >Male</button>
+
+                    <button 
+                        style={femaleButtonStyle}
+                        onClick={(e) => this.handleGenderSelect(e, 'female')}
+                        >Female</button>
+                </div>
+                    
+                <div>
+                    <label>Password: </label>
+                    <input type="password" value={this.state.password} onChange={(e) => this.handleUserInfoChange(e, 'password')} />
+                </div>
+
+                <div>
+                    <label>Confirm Password: </label>
+                    <input type="password" value={this.state.confirmPass} onChange={(e) => this.handleUserInfoChange(e, 'confirmPass')} />
+                </div>
+
+                <div>
+                    <label>Native Language: </label>
+                    <input type="text" value={this.state.nativeLanguage} onChange={(e) => this.handleUserInfoChange(e, 'nativeLanguage')} />
+                </div>
+
+                {/* the part below contains the whole learning languages section */}
+
+                <div className="languages-input">
+                    <label>Languages you want to learn:</label>
+
+                    <input type="text" value={this.state.learningLanguage} onChange={(e) => this.handleUserInfoChange(e, 'learningLanguage')} />
+
+                    <button onClick={this.submitLanguage}>Add Language</button>
+
+                    {/* shows the languages added */}
+                    <div className="learning-languages">
+                        <ul>
+                            {languages}
+                        </ul>
+                    </div>
+
+                </div>
+
+                <div>
+                    {/*Submits the entire form */}
+                    <button onClick={this.handleSubmit} type="submit">Submit</button>
+                </div>
+
+        
             </div>
 
             
            
-            </>
+          
         )
     }
 }
