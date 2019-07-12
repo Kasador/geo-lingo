@@ -3,6 +3,8 @@ import '../Login/Login.scss';
 import World from '../Assets/Images/header.png';
 import Logo from '../Assets/Images/logo.png';
 import { Link } from 'react-router-dom';
+import { fadeIn } from 'react-animations'
+import Radium, {StyleRoot} from 'radium';
 
 // Login / Create account page
 function Login() {
@@ -17,6 +19,14 @@ function Login() {
     const hide = () => {
         setIsOpen({ ...isOpen, open: false });
     }
+    // animate login modal
+    const styles = {
+        fadeIn: {
+            animation: 'x 1s',
+            animationName: Radium.keyframes(fadeIn, 'fadeIn')
+        }
+    }
+
     return (
         <div className="Login">
             {/* header */}
@@ -38,7 +48,8 @@ function Login() {
             {/* modal login */}
             {isOpen.open ? <div className="LoginModalWrapper">
                 <div className="Overlay" onClick={hide}></div>
-                <div className="LoginModal">
+                <StyleRoot>
+                <div className="LoginModal" style={styles.fadeIn}>
                     <i className="far fa-window-close LoginClose" onClick={hide}></i>
                     <div className="LogInFields">
                         {/* logo */}
@@ -50,6 +61,7 @@ function Login() {
                         <button className="LoginBtnModal">Log In</button> 
                     </div>
                 </div>
+                </StyleRoot>
             </div> : null}
             {/* graphic, world */}
             <img src={World} alt="world-header" id="LoginImage" />
