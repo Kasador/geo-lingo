@@ -15,7 +15,7 @@ class CreateAccount extends Component {
         email: '',
         password: '',
         confirmPass: '',
-        birthdate: '',
+        birthdate: new Date(),
         nativeLanguage: '',
         learningLanguage: '',
         learningLanguagesList: [],
@@ -100,6 +100,10 @@ class CreateAccount extends Component {
        
     }
 
+    handleDateChange = date => {
+       this.setState({birthdate: date}); 
+    }
+
     
 
    
@@ -149,9 +153,14 @@ class CreateAccount extends Component {
                         <input type="text" value={this.state.email} onChange={(e) => this.handleUserInfoChange(e, 'email')}/>
                     </div>
 
-                    
+                    <div>
+                        <label>Date of Birth</label>
+                        <DatePicker 
+                            value={this.state.birthdate}
+                            onChange={this.handleDateChange}/>
+                    </div>
                        
-                   
+                    
 
                     <div>
                         <label>Password: </label>
@@ -201,7 +210,7 @@ class CreateAccount extends Component {
             </div>
 
             
-            <DatePicker />
+           
             </>
         )
     }
