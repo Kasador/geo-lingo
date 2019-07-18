@@ -3,12 +3,8 @@ import './CreateAccount.scss';
 import { Link } from 'react-router-dom';
 import DatePicker from 'react-date-picker'
 
-
-
 class CreateAccount extends Component {
-
     state = {
-       
         username: '',
         firstName: '',
         lastName: '',
@@ -20,7 +16,6 @@ class CreateAccount extends Component {
         nativeLanguage: '',
         learningLanguage: '',
         learningLanguagesList: [],
-      
     }
 
     handleUserInfoChange = (e, type) => { //onChange handler passes in the event and type.
@@ -92,8 +87,8 @@ class CreateAccount extends Component {
        this.setState({birthdate: date}); 
     }
 
-
     handleGenderSelect = (e, gender) => {
+        e.preventDefault();
         if (gender === 'male') {
             this.setState({gender: 'male'})
        
@@ -102,8 +97,7 @@ class CreateAccount extends Component {
         
         } else {
             console.log('no')
-        }
-        
+        }  
     }
 
     handleSubmit = (e) => {
@@ -113,17 +107,11 @@ class CreateAccount extends Component {
         //add checks for everything else here later
 
         if (this.state.password === this.state.confirmPass) {
-            console.log(this.state)
+            console.log(this.state);
         } else {
-            alert('Passwords are different')
+            alert('Passwords are different');
         }
-
-
     }
-
-    
-
-   
 
     render () {
 
@@ -152,103 +140,101 @@ class CreateAccount extends Component {
                    <button onClick={(e) => this.deleteLanguage(e, language)}>X</button>
                 </li>
             )
-        })
+        });
+        // take away underline decoration 
+        const styleBackBtn = {
+            textDecoration: 'none',
+        }
         
         return (
-       
-            <div className="account-creation-page">
-
-                <Link to="/sign-in/"><button className="back-button">Go Back</button></Link>
-
-                <h1>Create an Account</h1>
-
-                
-
-                <div>
-                    <label>Username: </label>    
-                        <input type="text" value={this.state.username} onChange={(e) => this.handleUserInfoChange(e, 'username')} /> 
-                </div>
-
-                <div>
-                    <label>First Name: </label>
-                    <input type="text" value={this.state.firstName} onChange={(e) => this.handleUserInfoChange(e, 'firstName')}/>
-                </div>
-
-                <div>
-                    <label>Last Name: </label>
-                    <input type="text" value={this.state.lastName} onChange={(e) => this.handleUserInfoChange(e, 'lastName')}/>
-                </div>
-
-                <div>
-                    <label>Email Address: </label>
-                    <input type="text" value={this.state.email} onChange={(e) => this.handleUserInfoChange(e, 'email')}/>
-                </div>
-
-                {/* calendar/input fiels to select birthday*/}
-                <div>
-                    <label>Date of Birth</label>
-                    <DatePicker 
-                        value={this.state.birthdate}
-                        onChange={this.handleDateChange}/>
-                </div>
-
-                <div>
-                    <button 
-                        style={maleButtonStyle}
-                        onClick={(e) => this.handleGenderSelect(e, 'male')}
-                        >Male</button>
-
-                    <button 
-                        style={femaleButtonStyle}
-                        onClick={(e) => this.handleGenderSelect(e, 'female')}
-                        >Female</button>
-                </div>
-                    
-                <div>
-                    <label>Password: </label>
-                    <input type="password" value={this.state.password} onChange={(e) => this.handleUserInfoChange(e, 'password')} />
-                </div>
-
-                <div>
-                    <label>Confirm Password: </label>
-                    <input type="password" value={this.state.confirmPass} onChange={(e) => this.handleUserInfoChange(e, 'confirmPass')} />
-                </div>
-
-                <div>
-                    <label>Native Language: </label>
-                    <input type="text" value={this.state.nativeLanguage} onChange={(e) => this.handleUserInfoChange(e, 'nativeLanguage')} />
-                </div>
-
-                {/* the part below contains the whole learning languages section */}
-
-                <div className="languages-input">
-                    <label>Languages you want to learn:</label>
-
-                    <input type="text" value={this.state.learningLanguage} onChange={(e) => this.handleUserInfoChange(e, 'learningLanguage')} />
-
-                    <button onClick={this.submitLanguage}>Add Language</button>
-
-                    {/* shows the languages added */}
-                    <div className="learning-languages">
-                        <ul>
-                            {languages}
-                        </ul>
+            <div className="CreateAccount">
+                {/* back to top */}
+                <Link to="/sign-in/" style={styleBackBtn}>
+                    <div className="BackBtnContainer">
+                        <i className="fas fa-chevron-left"></i>
+                        <span>Go Back</span>
                     </div>
-
-                </div>
-
-                <div>
-                    {/*Submits the entire form */}
-                    <button onClick={this.handleSubmit} type="submit">Submit</button>
-                </div>
-
-        
+                </Link>
+                {/* top section */}
+                <section className="TopSection">
+                    <div className="TopSectionWrapper">
+                        <h1>Sign Up</h1>
+                    </div>
+                </section>
+                {/* bottom section */}
+                <section className="BotttomSection">
+                    {/* form section */}
+                    <form class="Form">
+                        <h1>Create Your Geolingo Account</h1>
+                        <div class="FormContainer">
+                            <div className="FormContainerFlex">
+                                {/* username */}
+                                <label>Username: </label>    
+                                <input type="text" value={this.state.username} onChange={(e) => this.handleUserInfoChange(e, 'username')} /> 
+                                {/* firs name */}
+                                <label>First Name: </label>
+                                <input type="text" value={this.state.firstName} onChange={(e) => this.handleUserInfoChange(e, 'firstName')}/>
+                                {/* last name  */}
+                                <label>Last Name: </label>
+                                <input type="text" value={this.state.lastName} onChange={(e) => this.handleUserInfoChange(e, 'lastName')}/>
+                                {/* email */}
+                                <label>Email Address: </label>
+                                <input type="text" value={this.state.email} onChange={(e) => this.handleUserInfoChange(e, 'email')}/>
+                                {/* DOB & gender */}
+                                <div className="flex_DOBGENDER">
+                                    <div className="DOBGENDER">
+                                        <label>Date of Birth</label>
+                                            <DatePicker 
+                                                value={this.state.birthdate}
+                                                onChange={this.handleDateChange}/>
+                                    </div>
+                                    <div className="DOBGENDER">
+                                        <label>Gender</label>
+                                        <div>
+                                            <button 
+                                                style={maleButtonStyle}
+                                                onClick={(e) => this.handleGenderSelect(e, 'male')}
+                                                >Male</button>
+                                            <button 
+                                                style={femaleButtonStyle}
+                                                onClick={(e) => this.handleGenderSelect(e, 'female')}
+                                                >Female</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="FormContainerFlex">
+                                {/* password */}
+                                <label>Password: </label>
+                                <input type="password" value={this.state.password} onChange={(e) => this.handleUserInfoChange(e, 'password')} />
+                                {/* confirm password */}
+                                <label>Confirm Password: </label>
+                                <input type="password" value={this.state.confirmPass} onChange={(e) => this.handleUserInfoChange(e, 'confirmPass')} />
+                                {/* native language */}
+                                <label>Native Language: </label>
+                                <input type="text" value={this.state.nativeLanguage} onChange={(e) => this.handleUserInfoChange(e, 'nativeLanguage')} />
+                                {/* languages wanting to learn */}
+                                <div className="languages-input">
+                                    <label>Languages you want to learn:</label>
+                                    <input type="text" value={this.state.learningLanguage} onChange={(e) => this.handleUserInfoChange(e, 'learningLanguage')} />
+                                    <button onClick={this.submitLanguage}>Add Language</button>
+                                    {/* shows the languages added */}
+                                    <div className="learning-languages">
+                                        <ul>
+                                            {languages}
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {/* create account button */}
+                        <button onClick={this.handleSubmit} type="submit" id="AccountSubmit">Create Account</button>
+                        {/* terms of use text */}
+                        <span id="TermsOfUse">By clicking the button, you agree to Geolingo's Policy &#38; Terms of Use.</span>
+                    </form>
+                </section>
             </div>
-
-            
-           
-          
-        )
+        );
     }
 }
 
