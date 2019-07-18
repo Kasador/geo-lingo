@@ -1,47 +1,131 @@
+// imported color scheme
 @import '../Assets/colors.scss';
 
-.account-creation-page {
-    background: $primary-color;
+.CreateAccount {
     display: flex;
-    align-items: flex-start;
-    justify-content: center;
     flex-direction: column;
-    height: 100vh;
-
-    h1 { //'Create an Account' header
-        align-self: center;
-        font-size: 2em;
-        padding: 1em;
-    }
-    
 }
+// back to top button
+.BackBtnContainer {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    position: fixed;
+    top: 20px;
+    left: 20px;
 
-.back-button {
+    span {
+        color: $white;
+        font-size: 1.5rem;
+        padding: 5px;
+    }
+    i {
+        color: $white;
+        font-size: 2rem;
+    }
+}
+.BackButton {
     padding: 1em;
-    position: absolute;
-    top: 5%;
-    left: 5%;
+    position: fixed;
+    top: 20px;
+    left: 20px;
 }
+// top section
+.TopSection {
+    background-color: $primary-color;
+    width: 100%;
+    height: 35vh;
+}
+.TopSectionWrapper {
+    width: 70%;
+    margin: 0 auto;
 
+    h1 {
+        position: absolute;
+        top: 50px;
+        font-size: 4.5rem;
+        color: $white;
+    }
+}
+// bottom section
+.BotttomSection {
+    width: 100%;
+    height: 100%;
+}
+// form
+.Form {
+    position: fixed;
+    left: 50%;
+    transform: translate(-50%);
+    top: 25vh;
+    z-index: 10;
+    height: 100vh;
+    width: 70%;
+    border-radius: 5px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
 
-.form div { //all the elements are in their own divs
-    
+    h1 {
+        font-size: 2rem;
+        margin-left: 20px;
+        margin-top: 20px;
+    }
+}
+.FormContainer {
+    display: flex;
+    margin: 10px 20px;
+}
+.FormContainerFlex {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 100%;
+    margin: 20px;
+
+    input {
+        border-radius: 5px;
+        padding: 5px;
+    }
     label {
-        font-size: 1.5em;
+        font-size: 1.3rem;
+        padding: 5px 0;
     }
 }
-
-
-
-.languages-input { //holds the box, button, and text.
-
-    .learning-languages { //the box that shows the languages added
-        border: 1px solid black;
-        background-color: $gray;
-        display: inline-block;
-        text-align: center;
-    }
-
-
+// submit button
+#AccountSubmit {
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    padding: 5px 0px;
+    width: 300px;
+    border-radius: 10px;
+    margin: 10px 20px;
+    background-color: $primary-color;
+    color: $white;
+    margin-top: 0px;
+    
+    transition: all 0.3s;
 }
-
+#AccountSubmit:focus {
+    outline: none;
+}
+#AccountSubmit:hover {
+    box-shadow: 3px 5px;
+    color: $gray;
+}
+// terms of use text
+#TermsOfUse {
+    padding: 5px 20px;
+    font-size: 0.8rem;
+    color: $gray;
+}
+// fix DOB and Gender
+.flex_DOBGENDER {
+    display: flex;
+}
+.DOBGENDER {
+    display: flex;
+    flex-direction: column;
+}
