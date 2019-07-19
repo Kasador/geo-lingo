@@ -45,6 +45,14 @@
         top: 50px;
         font-size: 4.5rem;
         color: $white;
+
+        @media screen and (max-width: 1065px) {
+            left: 50%;
+            transform: translate(-50%);
+        }
+        @media screen and (max-width: 600px) {
+            font-size: 3.5rem;
+        }
     }
 }
 // bottom section
@@ -54,12 +62,11 @@
 }
 // form
 .Form {
-    position: fixed;
+    position: absolute;
     left: 50%;
     transform: translate(-50%);
     top: 25vh;
     z-index: 10;
-    height: 100vh;
     width: 70%;
     border-radius: 5px;
     background-color: white;
@@ -70,11 +77,24 @@
         font-size: 2rem;
         margin-left: 20px;
         margin-top: 20px;
+        font-weight: 900;
+
+        @media screen and (max-width: 760px) {
+            font-size: 1.5rem;
+        }
+        @media screen and (max-width: 550px) {
+            font-size: 1.2rem;
+        }
     }
 }
 .FormContainer {
     display: flex;
     margin: 10px 20px;
+
+    @media screen and (max-width: 1065px) {
+        flex-direction: column;
+        width: 80%;
+    }
 }
 .FormContainerFlex {
     display: flex;
@@ -86,10 +106,12 @@
     input {
         border-radius: 5px;
         padding: 5px;
+        margin: 3px 0;
     }
     label {
         font-size: 1.3rem;
         padding: 5px 0;
+        margin-top: 10px;
     }
 }
 // submit button
@@ -120,12 +142,76 @@
     padding: 5px 20px;
     font-size: 0.8rem;
     color: $gray;
+    margin-bottom: 30px;
 }
 // fix DOB and Gender
 .flex_DOBGENDER {
     display: flex;
+
+    @media screen and (max-width: 760px) {
+        flex-direction: column;
+    }
 }
 .DOBGENDER {
     display: flex;
     flex-direction: column;
+    margin-right: 30px;
+}
+// gender button styles
+.GenderBtns {
+    width: 250px;
+
+    @media screen and (max-width: 760px) {
+        flex-direction: column;
+    }
+}
+.GenderBtn {
+    font-size: 1.2rem;
+    width: 100px;
+    padding: 5px;
+    cursor: pointer;
+}
+.GenderBtn:focus {
+    outline: none;
+}
+.maleBtn {
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+.femaleBtn {
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+// style add langauge button and for languages
+.LanguagesInput {
+    margin-top: 20px;
+
+    label {
+        margin: 10px 0px;
+    }
+    input {
+        margin-top: 20px;
+    }
+}
+#AddLanguageBtn {
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 1rem;
+    text-transform: uppercase;
+    padding: 5px 5px;
+    width: 100px;
+    border-radius: 10px;
+    margin-left: 10px;
+    background-color: $primary-color;
+    color: $white;
+    margin-top: 0px;
+    
+    transition: all 0.3s;
+
+    @media screen and (max-width: 550px) {
+        width: 100px;
+    }
+}
+#AddLanguageBtn:focus {
+    outline: none;
 }
