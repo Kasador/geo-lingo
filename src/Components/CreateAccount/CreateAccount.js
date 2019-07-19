@@ -119,11 +119,11 @@ class CreateAccount extends Component {
 
         //add styling based on this.state.gender
         if (this.state.gender === 'male') {
-            maleButtonStyle = { backgroundColor: 'red' };
+            maleButtonStyle = { backgroundColor: '#FF6666' };
             femaleButtonStyle = { backgroundColor: 'white' };
         } else if (this.state.gender === 'female') {
             maleButtonStyle = { backgroundColor: 'white' };
-            femaleButtonStyle = { backgroundColor: 'red' };
+            femaleButtonStyle = { backgroundColor: '#FF6666' };
         } else {
             maleButtonStyle = { backgroundColor: 'white' };
             femaleButtonStyle = { backgroundColor: 'white' };
@@ -164,9 +164,9 @@ class CreateAccount extends Component {
                 {/* bottom section */}
                 <section className="BotttomSection">
                     {/* form section */}
-                    <form class="Form">
+                    <form className="Form">
                         <h1>Create Your Geolingo Account</h1>
-                        <div class="FormContainer">
+                        <div className="FormContainer">
                             <div className="FormContainerFlex">
                                 {/* username */}
                                 <label>Username: </label>    
@@ -190,12 +190,14 @@ class CreateAccount extends Component {
                                     </div>
                                     <div className="DOBGENDER">
                                         <label>Gender</label>
-                                        <div>
-                                            <button 
+                                        <div className="GenderBtns">
+                                            <button
+                                                className="GenderBtn maleBtn"
                                                 style={maleButtonStyle}
                                                 onClick={(e) => this.handleGenderSelect(e, 'male')}
                                                 >Male</button>
-                                            <button 
+                                            <button
+                                                className="GenderBtn femaleBtn"
                                                 style={femaleButtonStyle}
                                                 onClick={(e) => this.handleGenderSelect(e, 'female')}
                                                 >Female</button>
@@ -214,10 +216,11 @@ class CreateAccount extends Component {
                                 <label>Native Language: </label>
                                 <input type="text" value={this.state.nativeLanguage} onChange={(e) => this.handleUserInfoChange(e, 'nativeLanguage')} />
                                 {/* languages wanting to learn */}
-                                <div className="languages-input">
+                                <div className="LanguagesInput">
                                     <label>Languages you want to learn:</label>
+                                    <br></br>
                                     <input type="text" value={this.state.learningLanguage} onChange={(e) => this.handleUserInfoChange(e, 'learningLanguage')} />
-                                    <button onClick={this.submitLanguage}>Add Language</button>
+                                    <button onClick={this.submitLanguage} id="AddLanguageBtn">Add</button>
                                     {/* shows the languages added */}
                                     <div className="learning-languages">
                                         <ul>
