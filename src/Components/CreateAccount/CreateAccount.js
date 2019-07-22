@@ -93,7 +93,7 @@ class CreateAccount extends Component {
     }
 
 
-    handleGenderSelect = (e, gender) => {
+    handleGenderSelect = gender => {
         if (gender === 'male') {
             this.setState({gender: 'male'})
        
@@ -118,6 +118,7 @@ class CreateAccount extends Component {
             alert('Passwords are different')
         }
 
+       
 
     }
 
@@ -195,12 +196,12 @@ class CreateAccount extends Component {
                 <div>
                     <button 
                         style={maleButtonStyle}
-                        onClick={(e) => this.handleGenderSelect(e, 'male')}
+                        onClick={() => this.handleGenderSelect('male')}
                         >Male</button>
 
                     <button 
                         style={femaleButtonStyle}
-                        onClick={(e) => this.handleGenderSelect(e, 'female')}
+                        onClick={() => this.handleGenderSelect('female')}
                         >Female</button>
                 </div>
                     
