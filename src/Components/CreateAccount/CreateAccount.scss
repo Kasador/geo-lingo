@@ -1,47 +1,217 @@
+// imported color scheme
 @import '../Assets/colors.scss';
 
-.account-creation-page {
-    background: $primary-color;
+.CreateAccount {
     display: flex;
-    align-items: flex-start;
-    justify-content: center;
     flex-direction: column;
-    height: 100vh;
-
-    h1 { //'Create an Account' header
-        align-self: center;
-        font-size: 2em;
-        padding: 1em;
-    }
-    
 }
+// back to top button
+.BackBtnContainer {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    position: fixed;
+    top: 20px;
+    left: 20px;
 
-.back-button {
+    span {
+        color: $white;
+        font-size: 1.5rem;
+        padding: 5px;
+    }
+    i {
+        color: $white;
+        font-size: 2rem;
+    }
+}
+.BackButton {
     padding: 1em;
+    position: fixed;
+    top: 20px;
+    left: 20px;
+}
+// top section
+.TopSection {
+    background-color: $primary-color;
+    width: 100%;
+    height: 35vh;
+}
+.TopSectionWrapper {
+    width: 70%;
+    margin: 0 auto;
+
+    h1 {
+        position: absolute;
+        top: 50px;
+        font-size: 4.5rem;
+        color: $white;
+
+        @media screen and (max-width: 1065px) {
+            left: 50%;
+            transform: translate(-50%);
+        }
+        @media screen and (max-width: 600px) {
+            font-size: 3.5rem;
+        }
+    }
+}
+// bottom section
+.BotttomSection {
+    width: 100%;
+    height: 100%;
+}
+// form
+.Form {
     position: absolute;
-    top: 5%;
-    left: 5%;
+    left: 50%;
+    transform: translate(-50%);
+    top: 25vh;
+    z-index: 10;
+    width: 70%;
+    border-radius: 5px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+
+    h1 {
+        font-size: 2rem;
+        margin-left: 20px;
+        margin-top: 20px;
+        font-weight: 900;
+
+        @media screen and (max-width: 760px) {
+            font-size: 1.5rem;
+        }
+        @media screen and (max-width: 550px) {
+            font-size: 1.2rem;
+        }
+    }
 }
+.FormContainer {
+    display: flex;
+    margin: 10px 20px;
 
+    @media screen and (max-width: 1065px) {
+        flex-direction: column;
+        width: 80%;
+    }
+}
+.FormContainerFlex {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 100%;
+    margin: 20px;
 
-.form div { //all the elements are in their own divs
-    
+    input {
+        border-radius: 5px;
+        padding: 5px;
+        margin: 3px 0;
+    }
     label {
-        font-size: 1.5em;
+        font-size: 1.3rem;
+        padding: 5px 0;
+        margin-top: 10px;
     }
 }
-
-
-
-.languages-input { //holds the box, button, and text.
-
-    .learning-languages { //the box that shows the languages added
-        border: 1px solid black;
-        background-color: $gray;
-        display: inline-block;
-        text-align: center;
-    }
-
-
+// submit button
+#AccountSubmit {
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    padding: 5px 0px;
+    width: 300px;
+    border-radius: 10px;
+    margin: 10px 20px;
+    background-color: $primary-color;
+    color: $white;
+    margin-top: 0px;
+    
+    transition: all 0.3s;
 }
+#AccountSubmit:focus {
+    outline: none;
+}
+#AccountSubmit:hover {
+    box-shadow: 3px 5px;
+    color: $gray;
+}
+// terms of use text
+#TermsOfUse {
+    padding: 5px 20px;
+    font-size: 0.8rem;
+    color: $gray;
+    margin-bottom: 30px;
+}
+// fix DOB and Gender
+.flex_DOBGENDER {
+    display: flex;
 
+    @media screen and (max-width: 760px) {
+        flex-direction: column;
+    }
+}
+.DOBGENDER {
+    display: flex;
+    flex-direction: column;
+    margin-right: 30px;
+}
+// gender button styles
+.GenderBtns {
+    width: 250px;
+
+    @media screen and (max-width: 760px) {
+        flex-direction: column;
+    }
+}
+.GenderBtn {
+    font-size: 1.2rem;
+    width: 100px;
+    padding: 5px;
+    cursor: pointer;
+}
+.GenderBtn:focus {
+    outline: none;
+}
+.maleBtn {
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+.femaleBtn {
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+// style add langauge button and for languages
+.LanguagesInput {
+    margin-top: 20px;
+
+    label {
+        margin: 10px 0px;
+    }
+    input {
+        margin-top: 20px;
+    }
+}
+#AddLanguageBtn {
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 1rem;
+    text-transform: uppercase;
+    padding: 5px 5px;
+    width: 100px;
+    border-radius: 10px;
+    margin-left: 10px;
+    background-color: $primary-color;
+    color: $white;
+    margin-top: 0px;
+    
+    transition: all 0.3s;
+
+    @media screen and (max-width: 550px) {
+        width: 100px;
+    }
+}
+#AddLanguageBtn:focus {
+    outline: none;
+}

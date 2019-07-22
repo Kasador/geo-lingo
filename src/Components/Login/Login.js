@@ -22,7 +22,7 @@ function Login() {
     // animate login modal
     const styles = {
         fadeIn: {
-            animation: 'x 1s',
+            animation: 'x 0.5s',
             animationName: Radium.keyframes(fadeIn, 'fadeIn')
         }
     }
