@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './CreateAccount.scss';
 import { Link } from 'react-router-dom';
-import DatePicker from 'react-date-picker'
 
 class CreateAccount extends Component {
     state = {
@@ -11,7 +10,7 @@ class CreateAccount extends Component {
         email: '',
         password: '',
         confirmPass: '',
-        birthdate: new Date(),
+        birthdate: {month: 'January', day: '1', year: '1940'},
         gender: '',
         nativeLanguage: '',
         learningLanguage: '',
@@ -82,10 +81,78 @@ class CreateAccount extends Component {
         }));
     }
 
-    //for the datepicker
-    handleDateChange = date => {
-       this.setState({birthdate: date}); 
+    //       ---DATE-PICKER---
+    selectMonth = (e) => {
+        const month = e.target.value;
+        
+        this.setState(prevState => {
+            let birthdate = Object.assign({}, prevState.birthdate);
+            birthdate.month = month;
+            return { birthdate }
+        })  
+      
     }
+
+    selectDay = (e) => {
+        const day = e.target.value;
+
+        this.setState(prevState => {
+            let birthdate = Object.assign({}, prevState.birthdate);
+            birthdate.day = day;
+            return { birthdate }
+        })
+    }
+
+    selectYear = (e) => {
+        const year = e.target.value;
+
+        this.setState(prevState => {
+            let birthdate = Object.assign({}, prevState.birthdate);
+            birthdate.year = year;
+            return { birthdate}
+        })
+    }
+ 
+    // displays the days in the dropdown based on the month selected
+    datePickerDays = (month) => {
+        let datesArray = [];
+        if (month === 'February') {
+            for (let i = 1; i <= 29; i++) { // 29 for leap years
+    
+                datesArray.push(<option value={i} key={i}>{i}</option>)
+                
+            }
+        } else if (month === 'January' || month === 'March' || month === 'May' || month === 'July' || month === 'August' || month === 'October' || month === 'December') {
+            for (let i = 1; i <= 31; i++) {
+
+            datesArray.push(<option value={i} key={i}>{i}</option>)
+            }
+        } else {
+            for (let i = 1; i <= 30; i++) {
+
+                datesArray.push(<option value={i} key={i}>{i}</option>)
+
+            }
+        }
+
+        return datesArray;
+    }
+
+    //displays years starting from minimum year to maximum year
+    datePickerYears = (minYear, maxYear) => {
+        
+        const yearsArray = [] 
+
+        for (let i = minYear; i <= maxYear; i++) {
+            yearsArray.push(<option value={i} key={i}>{i}</option>)
+        }
+        
+        return yearsArray;
+    }
+        
+
+
+    //      ---DATE PICKER END---
 
     handleGenderSelect = (e, gender) => {
         e.preventDefault();
@@ -184,9 +251,38 @@ class CreateAccount extends Component {
                                 <div className="flex_DOBGENDER">
                                     <div className="DOBGENDER">
                                         <label>Date of Birth</label>
-                                            <DatePicker 
-                                                value={this.state.birthdate}
-                                                onChange={this.handleDateChange}/>
+                                        <div className="date_selecter">
+                                            <select name="month" onChange={this.selectMonth}>
+                                                <option value="January">January</option>
+                                                <option value="February">February</option>
+                                                <option value="March">March</option>
+                                                <option value="April">April</option>
+                                                <option value="May">May</option>
+                                                <option value="June">June</option>
+                                                <option value="July">July</option>
+                                                <option value="August">August</option>
+                                                <option value="September">September</option>
+                                                <option value="October">October</option>
+                                                <option value="November">November</option>
+                                                <option value="December">December</option>
+                                            </select>
+                                            <select name="day" onChange={this.selectDay}>
+                                                
+                                                {this.datePickerDays(this.state.birthdate.month)}
+                                                
+                                            </select>
+                                            <select name="year" onChange={this.selectYear}>
+                                                
+                                                {this.datePickerYears(1940, 2003)} {/* pass in minimum and maximum years */}
+                                                
+                                                
+                                            
+
+                                            </select>
+                                        </div>
+                                        
+
+
                                     </div>
                                     <div className="DOBGENDER">
                                         <label>Gender</label>

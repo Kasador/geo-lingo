@@ -144,6 +144,12 @@
     color: $gray;
     margin-bottom: 30px;
 }
+
+ //date of birth selector
+.date-selector {
+    display: flex;
+}
+
 // fix DOB and Gender
 .flex_DOBGENDER {
     display: flex;
